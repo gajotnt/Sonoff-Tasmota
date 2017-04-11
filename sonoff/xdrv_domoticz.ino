@@ -47,7 +47,7 @@ void mqtt_publishDomoticzPowerState(byte device)
   if (sysCfg.domoticz_relay_idx[device -1] && (strlen(sysCfg.domoticz_in_topic) != 0)) {
     if ((device < 1) || (device > Maxdevice)) device = 1;
 
-    if (sysCfg.module == SONOFF_LED) {
+    if (ld_flg) {
       snprintf_P(svalue, sizeof(svalue), PSTR("{\"idx\":%d,\"nvalue\":2,\"svalue\":\"%d\"}"),
         sysCfg.domoticz_relay_idx[device -1], sysCfg.led_dimmer[device -1]);
       mqtt_publish(sysCfg.domoticz_in_topic, svalue);
@@ -143,7 +143,7 @@ boolean domoticz_mqttData(char *topicBuf, uint16_t stopicBuf, char *dataBuf, uin
           if (nvalue == 2) {
             nvalue = domoticz["svalue1"];
             if ((pin[GPIO_WS2812] < 99) && (sysCfg.ws_dimmer == nvalue)) return 1;
-            if ((sysCfg.module == SONOFF_LED) && (sysCfg.led_dimmer[i] == nvalue)) return 1;
+            if ((ld_flg) && (sysCfg.led_dimmer[i] == nvalue)) return 1;
             snprintf_P(topicBuf, stopicBuf, PSTR("%s/%s/DIMMER%s"),
               sysCfg.mqtt_prefix[0], sysCfg.mqtt_topic, (Maxdevice > 1) ? stemp1 : "");
             snprintf_P(dataBuf, sdataBuf, PSTR("%d"), nvalue);

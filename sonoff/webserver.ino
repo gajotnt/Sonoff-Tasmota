@@ -407,7 +407,7 @@ void handleRoot()
 
     page += F("<div id='l1' name='l1'></div>");
     if (Maxdevice) {
-      if (sysCfg.module == SONOFF_LED) {
+      if (ld_flg) {
         snprintf_P(line, sizeof(line), PSTR("<input type='range' min='1' max='100' value='%d' onchange='lb(value)'>"),
           sysCfg.led_dimmer[0]);
         page += line;
@@ -485,7 +485,7 @@ void handleAjax2()
   }
 /*
  * Will interrupt user action when selected
-  if (sysCfg.module == SONOFF_LED) {
+  if (ld_flg) {
     snprintf_P(line, sizeof(line), PSTR("<input type='range' min='1' max='100' value='%d' onchange='lb(value)'>"),
       sysCfg.led_dimmer[0]);
     page += line;

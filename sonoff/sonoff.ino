@@ -281,6 +281,7 @@ uint8_t led_inverted[4] = { 0 };      // LED inverted flag (1 = (0 = On, 1 = Off
 uint8_t swt_flg = 0;                  // Any external switch configured
 uint8_t dht_type = 0;                 // DHT type (DHT11, DHT21 or DHT22)
 uint8_t hlw_flg = 0;                  // Power monitor configured
+uint8_t ld_flg = 0;                   // Led driver RGB RGBW type
 uint8_t i2c_flg = 0;                  // I2C configured
 uint8_t pwm_flg = 0;                  // PWM configured
 uint8_t pwm_idxoffset = 0;            // Allowed PWM command offset (change for Sonoff Led)
@@ -340,7 +341,7 @@ void setRelay(uint8_t power)
     Serial.write('\n');
     Serial.flush();
   }
-  else if (sysCfg.module == SONOFF_LED) {
+  else if (ld_flg) {
     sl_setPower(power &1);
   }
   else if (sysCfg.module == EXS_RELAY) {
@@ -855,7 +856,7 @@ void mqttDataCb(char* topic, byte* data, unsigned int data_len)
       }
       snprintf_P(svalue, sizeof(svalue), PSTR("{\"BlinkCount\":%d}"), sysCfg.blinkcount);
     }
-    else if ((sysCfg.module == SONOFF_LED) && sl_command(type, index, dataBufUc, data_len, payload, svalue, sizeof(svalue))) {
+    else if ((ld_flg) && sl_command(type, index, dataBufUc, data_len, payload, svalue, sizeof(svalue))) {
       // Serviced
     }
     else if (!strcmp(type,"SAVEDATA")) {
@@ -1305,7 +1306,7 @@ void mqttDataCb(char* topic, byte* data, unsigned int data_len)
 #ifdef USE_I2C
     if (i2c_flg) snprintf_P(svalue, sizeof(svalue), PSTR("%s, I2CScan"), svalue);
 #endif  // USE_I2C
-    if (sysCfg.module == SONOFF_LED) snprintf_P(svalue, sizeof(svalue), PSTR("%s, Color, Dimmer, Fade, Speed, Wakeup, WakeupDuration, LedTable"), svalue);
+    if (ld_flg) snprintf_P(svalue, sizeof(svalue), PSTR("%s, Color, Dimmer, Fade, Speed, Wakeup, WakeupDuration, LedTable"), svalue);
 #ifdef USE_WS2812
     if (pin[GPIO_WS2812] < 99) snprintf_P(svalue, sizeof(svalue), PSTR("%s, Color, Dimmer, Fade, Speed, Wakeup, LedTable, Pixels, Led, Width, Scheme"), svalue);
 #endif
@@ -1742,7 +1743,7 @@ void stateloop()
     }
   }
 
-  if (sysCfg.module == SONOFF_LED) sl_animate();
+  if (ld_flg) sl_animate();
   
 #ifdef USE_WS2812
   if (pin[GPIO_WS2812] < 99) ws2812_animate();
@@ -2064,6 +2065,8 @@ void GPIO_init()
   analogWriteRange(PWM_RANGE);  // Default is 1023 (Arduino.h)
   analogWriteFreq(PWM_FREQ);    // Default is 1000 (core_esp8266_wiring_pwm.c)
 
+  ld_flg = (sysCfg.module == SONOFF_LED) || (sysCfg.module == ARILUX_RGB) || (sysCfg.module == ARILUX_RGBW);
+
   Maxdevice = 1;
   if (sysCfg.module == SONOFF_DUAL) {
     Maxdevice = 2;
@@ -2073,7 +2076,8 @@ void GPIO_init()
     Maxdevice = 4;
     Baudrate = 19200;
   }
-  else if (sysCfg.module == SONOFF_LED) {
+  else if(ld_flg)
+  {
     pwm_idxoffset = 2;
     pin[GPIO_WS2812] = 99;  // I do not allow both Sonoff Led AND WS2812 led
     sl_init();

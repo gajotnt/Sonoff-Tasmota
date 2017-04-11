@@ -121,6 +121,7 @@ enum module_t {
   WEMOS,
   SONOFF_DEV,
   H801,
+  ARILUX_RGB,
   ARILUX_RGBW,
   MAXMODULE };
 
@@ -391,6 +392,20 @@ const mytmplt modules[MAXMODULE] PROGMEM = {
      GPIO_PWM4,        // GPIO13 Green 
      GPIO_PWM1,        // GPIO14 W1 
      GPIO_PWM5,        // GPIO15 Red 
+     0, 0
+  },
+  { "ARILUX RGB",      // Arilux RGB Wifi (ESP8266)
+     GPIO_USER,        // GPIO01 TX Serial RXD and Optional sensor
+     GPIO_USER,        // GPIO02
+     GPIO_USER,        // GPIO03 RX Serial TXD and Optional sensor
+     GPIO_USER,        // GPIO03 TX - Pin next to GND on the PCB
+     GPIO_USER,        // GPIO04 IR/RF Pin 
+     GPIO_PWM4,        // GPIO05 Green
+     0, 0, 0, 0, 0, 0, // Flash connection
+     GPIO_PWM3,        // GPIO12 Blue
+     GPIO_LED1_INV,    // GPIO13 Blue Led (0 = On, 1 = Off)
+     GPIO_PWM5,        // GPIO14 Red 
+     GPIO_USER,        // GPIO15 
      0, 0
   },
   { "ARILUX RGBW",     // Arilux RGBW Wifi (ESP8266)

@@ -103,7 +103,7 @@ void sl_blank(byte state)
 
 /*
  * Disabled when used with latest arduino-esp8266 pwm files
-  if (sysCfg.module == SONOFF_LED) {
+  if (ld_flg) {
     sl_blankv = state;
     sl_wakeupActive = 0;
     sl_animate();
