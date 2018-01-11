@@ -1,5 +1,5 @@
 /*
-  en-GB.h - localization for English - United Kingdom for Sonoff-Tasmota
+  pt-PT.h - localization for Portuguese for Sonoff-Tasmota
 
   Copyright (C) 2018  Theo Arends
 
@@ -17,8 +17,8 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef _LANGUAGE_EN_GB_H_
-#define _LANGUAGE_EN_GB_H_
+#ifndef _LANGUAGE_PT_PT_H_
+#define _LANGUAGE_PT__H_
 
 /*************************** ATTENTION *******************************\
  *
@@ -37,71 +37,71 @@
 #define D_HOUR_MINUTE_SEPARATOR ":"
 #define D_MINUTE_SECOND_SEPARATOR ":"
 
-#define D_DAY3LIST "SunMonTueWedThuFriSat"
-#define D_MONTH3LIST "JanFebMarAprMayJunJulAugSepOctNovDec"
+#define D_DAY3LIST "DomSegTerQuaQuiSexSab"
+#define D_MONTH3LIST "JanFebMarAbrMaiJunJulAugSetOutNovDez"
 
 // Non JSON decimal separator
 #define D_DECIMAL_SEPARATOR "."
 
 // Common
 #define D_ADMIN "Admin"
-#define D_AIR_QUALITY "Air quality"
+#define D_AIR_QUALITY "Quality do Ar"
 #define D_AP "AP"                    // Access Point
 #define D_AS "as"
 #define D_AUTO "AUTO"
-#define D_BLINK "Blink"
-#define D_BLINKOFF "BlinkOff"
-#define D_BOOT_COUNT "Boot Count"
-#define D_BRIGHTLIGHT "Bright"
-#define D_BUTTON "Button"
+#define D_BLINK "Piscar"
+#define D_BLINKOFF "PiscarOff"
+#define D_BOOT_COUNT "Contagem de Boot"
+#define D_BRIGHTLIGHT "Brilho"
+#define D_BUTTON "Botão"
 #define D_BY "by"                    // Written by me
 #define D_BYTES "Bytes"
 #define D_CELSIUS "Celsius"
-#define D_CO2 "Carbon dioxide"
+#define D_CO2 "Dioxido de Carbono"
 #define D_CODE "code"                // Button code
-#define D_COLDLIGHT "Cold"
-#define D_COMMAND "Command"
-#define D_CONNECTED "Connected"
-#define D_COUNT "Count"
-#define D_COUNTER "Counter"
-#define D_CURRENT "Current"          // As in Voltage and Current
+#define D_COLDLIGHT "Frio"
+#define D_COMMAND "Commndo"
+#define D_CONNECTED "Ligado"
+#define D_COUNT "Contagem"
+#define D_COUNTER "Contador"
+#define D_CURRENT "Corrente"          // As in Voltage and Current
 #define D_DATA "Data"
-#define D_DARKLIGHT "Dark"
+#define D_DARKLIGHT "Escuro"
 #define D_DEBUG "Debug"
-#define D_DISABLED "Disabled"
-#define D_DNS_SERVER "DNS Server"
-#define D_DONE "Done"
+#define D_DISABLED "Desativado"
+#define D_DNS_SERVER "Servidor de DNS"
+#define D_DONE "Feito"
 #define D_DST_TIME "DST"
-#define D_EMULATION "Emulation"
-#define D_ENABLED "Enabled"
-#define D_ERASE "Erase"
-#define D_ERROR "Error"
+#define D_EMULATION "Emulacao"
+#define D_ENABLED "Ativado"
+#define D_ERASE "Apagar"
+#define D_ERROR "Erro"
 #define D_FAHRENHEIT "Fahrenheit"
-#define D_FAILED "Failed"
+#define D_FAILED "Falhou"
 #define D_FALLBACK "Fallback"
 #define D_FALLBACK_TOPIC "Fallback Topic"
-#define D_FALSE "False"
-#define D_FILE "File"
-#define D_FREE_MEMORY "Free Memory"
+#define D_FALSE "Falso"
+#define D_FILE "Ficheiro"
+#define D_FREE_MEMORY "Memoria Disponivel"
 #define D_GAS "Gas"
 #define D_GATEWAY "Gateway"
-#define D_GROUP "Group"
+#define D_GROUP "Groupo"
 #define D_HOST "Host"
 #define D_HOSTNAME "Hostname"
-#define D_HUMIDITY "Humidity"
-#define D_ILLUMINANCE "Illuminance"
-#define D_IMMEDIATE "immediate"      // Button immediate
+#define D_HUMIDITY "Humidade"
+#define D_ILLUMINANCE "Illuminancia"
+#define D_IMMEDIATE "Immediato"      // Button immediate
 #define D_INDEX "Index"
 #define D_INFO "Info"
-#define D_INITIALIZED "Initialized"
-#define D_IP_ADDRESS "IP Address"
-#define D_LIGHT "Light"
+#define D_INITIALIZED "Inicializado"
+#define D_IP_ADDRESS "Endereço de IP"
+#define D_LIGHT "Luis"
 #define D_LWT "LWT"
-#define D_MODULE "Module"
+#define D_MODULE "Modulo"
 #define D_MQTT "MQTT"
 #define D_MULTI_PRESS "multi-press"
-#define D_NOISE "Noise"
-#define D_NONE "None"
+#define D_NOISE "Ruido"
+#define D_NONE "Nenhum"
 #define D_OFF "Off"
 #define D_OFFLINE "Offline"
 #define D_OK "Ok"
@@ -111,7 +111,7 @@
 #define D_PORT "Port"
 #define D_POWER_FACTOR "Power Factor"
 #define D_POWERUSAGE "Power"
-#define D_PRESSURE "Pressure"
+#define D_PRESSURE "Pressão"
 #define D_PRESSUREATSEALEVEL "SeaPressure"
 #define D_PROGRAM_FLASH_SIZE "Program Flash Size"
 #define D_PROGRAM_SIZE "Program Size"
